@@ -9,20 +9,19 @@
 require_once  __DIR__ . '/../bootstrap.php';
 
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Code\Sistema\Controller\ProdutoController;
+use Code\Sistema\Service\ProdutoService;
+
+$app['produtoService'] = function() use($em){
+    $ps = new ProdutoService($em);
+    return $ps;
+};
 
 
-
-$app->get('/', function(){
-    $cliente = [
-        0 => ['nome' => 'Cliente Teste 00', 'email' => 'email@teste.com.br', 'CPF' => '000.000.000-00'],
-        1 => ['nome' => 'Cliente Teste 01', 'email' => 'email@teste.com.br', 'CPF' => '000.000.000-00'],
-        2 => ['nome' => 'Cliente Teste 02', 'email' => 'email@teste.com.br', 'CPF' => '000.000.000-00'],
-    ];
-
-    return JsonResponse::create($cliente,200,['Content-Type' =>'application/json']);
-
-});
-
+/**
+ * Controller
+ */
+$app->mount('/', new ProdutoController());
 
 /**
  * Roda nossa aplicação

@@ -1,10 +1,11 @@
 [Code Education](http://sites.code.education/home-code/)
 ----
     - Curso: Silex (API REST)
-    - Projeto Fase 1: Instalação do Silex
-    - Criação de Rota /clientes e simulação de listagem de clientes com Nome, Email e CPF/CNPJ vindo de um array em formato Json.
+    - Projeto Fase 2: Persistindo no banco
+    - Criação de serviço que mantenha uma tabela de produtos com os seguintes campos: id, nome, descrição e valor.
+    - Registre o Service no Container de Serviço do Silex
     - Autor: Danilo de Paula
-    - Data: 09/05/2014
+    - Data: 14/05/2014
 ----
 Observações
 ----
@@ -13,7 +14,7 @@ Observações
 
 ### Versão
 
-0.1.0
+0.2.0
 
 ----
 ### Testando o projeto
