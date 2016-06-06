@@ -53,7 +53,9 @@ class ProdutoService implements IProdutoService
     {
         $produto = $this->em->getReference("Code\Sistema\Entity\Produto", $id);
         $this->em->remove($produto);
-        return true;
+        return [
+           "success" => true
+        ];
     }
 
     /**

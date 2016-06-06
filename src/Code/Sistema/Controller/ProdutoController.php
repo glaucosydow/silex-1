@@ -8,6 +8,7 @@
 
 namespace Code\Sistema\Controller;
 
+use Code\Sistema\Interfaces\IProdutoController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Silex\Application;
@@ -15,10 +16,6 @@ use Silex\ControllerProviderInterface;
 
 class ProdutoController implements controllerProviderInterface
 {
-    /**
-     * @var Application
-     */
-    private $app;
 
     public function connect(Application $app)
     {
@@ -48,6 +45,10 @@ class ProdutoController implements controllerProviderInterface
             return $app->json(self::novo($request, $app));
         });
 
+        //Deletar produto
+        $factory->delete('/produto/delete/{id}', function($id) use($app){
+            return $app->json();
+        });
 
         return $factory;
     }
@@ -118,5 +119,16 @@ class ProdutoController implements controllerProviderInterface
 
         return $app['produtoService']->insert($dados);
     }
+
+    /**
+     * @param $id
+     * @param $app
+     * @return mixed
+     */
+    public function delete($id,$app)
+    {
+        return $app['produtoService']->delete($id);
+    }
+
 
 }
